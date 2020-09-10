@@ -175,26 +175,27 @@ namespace The_River_Chat
                     line = sr.ReadLine();
                 }
                 sr.Close();
+                MessageBox.Show(hosting.ToString());
                 if (hosting == false)
                 {
-                    if (sname != null && ip != null && port != null && message_file != null)
-                    {
+                    /*if (sname != null && ip != null && port != null && message_file != null)
+                    {*/
                         ss_name = sname;
                         ss_ip = ip;
                         ss_port = port;
                         chatname.Content = sname;
                         visibility(Visibility.Visible);
-                    }
+                    //}
                 }
                 else if (hosting == true)
                 {
-                    if(sname != null && ip!= null && port != null && message_file != null)
-                    {
+                    /*if(sname != null && ip!= null && port != null && message_file != null)
+                    {*/
                         visibility(Visibility.Hidden);
                         MessageBox.Show("Opening hosting interface to start you server", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
                         hosting hs = new hosting(sname, ip, port, message_file);
                         hs.Show();
-                    }
+                    //}
                 }
             }
             

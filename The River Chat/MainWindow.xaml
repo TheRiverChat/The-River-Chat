@@ -18,7 +18,7 @@
             Height="300" Margin="140,70,0,0"
             TextWrapping="Wrap"
             VerticalAlignment="Top"
-            Width="622" RenderTransformOrigin="0.5,0.5" Cursor="None"
+            Width="622" RenderTransformOrigin="0.5,0.5"
             >
             <TextBox.RenderTransform>
                 <TransformGroup>
