@@ -82,7 +82,7 @@ namespace The_River_Chat
             {
                 IPAddress nip = IPAddress.Parse(ip);
                 server.Start(nip, Convert.ToInt32(port));
-                startserver_btn.Content = "Stop Hosting";
+                startserver_btn.Content = "Stop hosting";
                 MessageBox.Show("Server started!");
             } else
             {
@@ -98,6 +98,7 @@ namespace The_River_Chat
                         catch { }
                     }
                     server.Stop();
+                    startserver_btn.Content = "Start server";
                 }
             }
 

@@ -70,10 +70,7 @@ namespace The_River_Chat
             else File.Create(AppDomain.CurrentDomain.BaseDirectory + "servers.file");
             listwleft.Items.Add("+");
             listwleft.SelectedItem = -1;
-
             client = new SimpleTcpClient();
-            client.StringEncoder = Encoding.UTF8;
-            client.DataReceived += Client_DataRecieved;
         }
         private void Client_DataRecieved(object sender, Message e)
         {
@@ -87,6 +84,8 @@ namespace The_River_Chat
             {
                 try
                 {
+                    client.StringEncoder = Encoding.UTF8;
+                    client.DataReceived += Client_DataRecieved;
                     client.Connect(ss_ip, System.Convert.ToInt32(ss_port));
                     MessageBox.Show("Connected");
                 }
@@ -175,7 +174,6 @@ namespace The_River_Chat
                     line = sr.ReadLine();
                 }
                 sr.Close();
-                MessageBox.Show(hosting.ToString());
                 if (hosting == false)
                 {
                     /*if (sname != null && ip != null && port != null && message_file != null)
