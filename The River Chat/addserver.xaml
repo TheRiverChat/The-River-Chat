@@ -11,7 +11,7 @@
             x:Name="servername"
             HorizontalAlignment="Left"
             Height="23"
-            Margin="160,164,0,0"
+            Margin="160,165,0,0"
             TextWrapping="Wrap"
             Text="Server name"
             VerticalAlignment="Top"
@@ -21,7 +21,7 @@
             x:Name="serverip"
             HorizontalAlignment="Left"
             Height="23"
-            Margin="160,221,0,0"
+            Margin="160,220,0,0"
             TextWrapping="Wrap"
             Text="IP address"
             VerticalAlignment="Top"
@@ -31,7 +31,7 @@
             x:Name="serverport"
             HorizontalAlignment="Left"
             Height="23"
-            Margin="160,284,0,0"
+            Margin="160,285,0,0"
             TextWrapping="Wrap"
             Text="Port"
             VerticalAlignment="Top"
@@ -41,22 +41,22 @@
             x:Name="host_btn"
             Content="Host server"
             HorizontalAlignment="Left"
-            Margin="80,351,0,0"
+            Margin="35,350,0,0"
             VerticalAlignment="Top"
-            Width="110" Click="host_btn_Click"/>
+            Width="110" Click="host_btn_Click" Background="#FF00EAEA" BorderBrush="#FF0095EA" Foreground="#DD000000"/>
         
         <Button
             x:Name="add_btn"
             Content="Add server"
             HorizontalAlignment="Left"
-            Margin="282,351,0,0"
+            Margin="300,350,0,0"
             VerticalAlignment="Top"
-            Width="110" Click="add_btn_Click"/>
+            Width="110" Click="add_btn_Click" Background="#FF00EAEA" BorderBrush="#FF0095EA" Foreground="#DD000000"/>
 
         <Label
             Content="Add / Host Server"
             HorizontalAlignment="Left"
-            Margin="146,43,0,0"
+            Margin="145,45,0,0"
             VerticalAlignment="Top"
             FontSize="18"/>
     </Grid>

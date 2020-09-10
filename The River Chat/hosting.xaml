@@ -10,42 +10,36 @@
         <Label
             x:Name="label_name"
             Content="Server Name"
-            Margin="334,49,0,0"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Left"
+            Margin="90,130,583,256"
             FontSize="20"/>
-        
+
         <Label
             x:Name="label_ip"
             Content="Server IP"
-            HorizontalAlignment="Left"
-            Margin="344,113,0,0"
+            Margin="354,130,355,0"
             VerticalAlignment="Top"
             FontSize="20"/>
-        
+
         <Label
             x:Name="label_port"
             Content="Server Port"
-            HorizontalAlignment="Left"
-            Margin="340,174,0,0"
+            Margin="600,130,90,0"
             VerticalAlignment="Top"
             FontSize="20"/>
-        
+
         <Button
             x:Name="startserver_btn"
             Content="Start server"
-            Margin="340,256,0,0"
+            Margin="220,215,0,0"
             VerticalAlignment="Top"
-            Width="110"
-            HorizontalAlignment="Left" Click="startserver_btn_Click"/>
-        
+            Width="120"
+            HorizontalAlignment="Left" Click="startserver_btn_Click" Background="#FF00EAEA" BorderBrush="#FF0095EA" Foreground="#DD000000"/>
+
         <Button
             x:Name="UPNP_btn"
             Content="Port opening"
-            HorizontalAlignment="Left"
-            Margin="334,334,0,0"
-            VerticalAlignment="Top"
-            Width="120" Click="UPNP_btn_Click"/>
+            Margin="464,215,210,0"
+            VerticalAlignment="Top" Click="UPNP_btn_Click" Background="#FF00EAEA" BorderBrush="#FF0095EA" Foreground="#DD000000"/>
 
     </Grid>
 </Window>

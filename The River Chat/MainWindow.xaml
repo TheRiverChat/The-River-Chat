@@ -44,24 +44,23 @@
             ToolTip="Resource name: MaterialDesignRaisedAccentButton" Margin="624,379,70,10" Background="#FF00EAEA" BorderBrush="#FF0095EA" Click="send_btn_Click">
             SEND
         </Button>
-        
+
         <TextBox 
             x:Name="text_tosend"
             HorizontalAlignment="Left"
             Height="23"
             Margin="139,383,0,0"
             TextWrapping="Wrap" 
-            Text="TextBox"
+            Text=""
             VerticalAlignment="Top"
             Width="480"/>
-        
+
         <Label 
             x:Name="chatname"
-            Content="Chat-Name" 
-            HorizontalAlignment="Left"
-            Margin="370,18,0,0"
-            VerticalAlignment="Top"/>
-        
+            Content="Chat-Name"
+            Margin="370,18,335,0"
+            VerticalAlignment="Top" FontSize="16"/>
+
         <ListView 
             x:Name="listwleft"
             HorizontalAlignment="Left"
@@ -75,7 +74,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        
+
 
     </Grid>
 
