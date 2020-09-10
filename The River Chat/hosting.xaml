@@ -1,0 +1,51 @@
+﻿<Window x:Class="The_River_Chat.hosting"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:The_River_Chat"
+        mc:Ignorable="d"
+        Title="The River - Hosting" Height="450" Width="800">
+    <Grid>
+        <Label
+            x:Name="label_name"
+            Content="Server Name"
+            Margin="334,49,0,0"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            FontSize="20"/>
+        
+        <Label
+            x:Name="label_ip"
+            Content="Server IP"
+            HorizontalAlignment="Left"
+            Margin="344,113,0,0"
+            VerticalAlignment="Top"
+            FontSize="20"/>
+        
+        <Label
+            x:Name="label_port"
+            Content="Server Port"
+            HorizontalAlignment="Left"
+            Margin="340,174,0,0"
+            VerticalAlignment="Top"
+            FontSize="20"/>
+        
+        <Button
+            x:Name="startserver_btn"
+            Content="Start server"
+            Margin="340,256,0,0"
+            VerticalAlignment="Top"
+            Width="110"
+            HorizontalAlignment="Left" Click="startserver_btn_Click"/>
+        
+        <Button
+            x:Name="UPNP_btn"
+            Content="Port opening"
+            HorizontalAlignment="Left"
+            Margin="334,334,0,0"
+            VerticalAlignment="Top"
+            Width="120" Click="UPNP_btn_Click"/>
+
+    </Grid>
+</Window>

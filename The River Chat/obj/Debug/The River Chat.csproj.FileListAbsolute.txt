@@ -1,0 +1,29 @@
+C:\Users\adamc\source\repos\The River Chat\The River Chat\bin\Debug\The River Chat.exe.config
+C:\Users\adamc\source\repos\The River Chat\The River Chat\bin\Debug\The River Chat.exe
+C:\Users\adamc\source\repos\The River Chat\The River Chat\bin\Debug\The River Chat.pdb
+C:\Users\adamc\source\repos\The River Chat\The River Chat\bin\Debug\MaterialDesignColors.dll
+C:\Users\adamc\source\repos\The River Chat\The River Chat\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\adamc\source\repos\The River Chat\The River Chat\bin\Debug\MaterialDesignColors.pdb
+C:\Users\adamc\source\repos\The River Chat\The River Chat\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\adamc\source\repos\The River Chat\The River Chat\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\adamc\source\repos\The River Chat\The River Chat\obj\Debug\The River Chat.csprojAssemblyReference.cache
+C:\Users\adamc\source\repos\The River Chat\The River Chat\obj\Debug\MainWindow.g.cs
+C:\Users\adamc\source\repos\The River Chat\The River Chat\obj\Debug\App.g.cs
+C:\Users\adamc\source\repos\The River Chat\The River Chat\obj\Debug\The River Chat_MarkupCompile.cache
+C:\Users\adamc\source\repos\The River Chat\The River Chat\obj\Debug\The River Chat_MarkupCompile.lref
+C:\Users\adamc\source\repos\The River Chat\The River Chat\obj\Debug\App.baml
+C:\Users\adamc\source\repos\The River Chat\The River Chat\obj\Debug\MainWindow.baml
+C:\Users\adamc\source\repos\The River Chat\The River Chat\obj\Debug\The River Chat.g.resources
+C:\Users\adamc\source\repos\The River Chat\The River Chat\obj\Debug\The_River_Chat.Properties.Resources.resources
+C:\Users\adamc\source\repos\The River Chat\The River Chat\obj\Debug\The River Chat.csproj.GenerateResource.cache
+C:\Users\adamc\source\repos\The River Chat\The River Chat\obj\Debug\The River Chat.csproj.CoreCompileInputs.cache
+C:\Users\adamc\source\repos\The River Chat\The River Chat\obj\Debug\The River Chat.csproj.CopyComplete
+C:\Users\adamc\source\repos\The River Chat\The River Chat\obj\Debug\The River Chat.exe
+C:\Users\adamc\source\repos\The River Chat\The River Chat\obj\Debug\The River Chat.pdb
+C:\Users\adamc\source\repos\The River Chat\The River Chat\bin\Debug\SimpleTCP.dll
+C:\Users\adamc\source\repos\The River Chat\The River Chat\bin\Debug\Mono.Nat.dll
+C:\Users\adamc\source\repos\The River Chat\The River Chat\bin\Debug\Mono.Nat.xml
+C:\Users\adamc\source\repos\The River Chat\The River Chat\obj\Debug\addserver.g.cs
+C:\Users\adamc\source\repos\The River Chat\The River Chat\obj\Debug\hosting.g.cs
+C:\Users\adamc\source\repos\The River Chat\The River Chat\obj\Debug\addserver.baml
+C:\Users\adamc\source\repos\The River Chat\The River Chat\obj\Debug\hosting.baml
