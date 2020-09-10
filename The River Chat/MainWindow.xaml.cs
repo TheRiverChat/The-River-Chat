@@ -171,10 +171,9 @@ namespace The_River_Chat
                         line = line.Replace("port: ", "");
                         port = line;
                     }
-                    else if (line.Contains("messages:"))
-                        line = line.Replace("messages: ", "");
+                    else if (line.Contains("messages:")) line = line.Replace("messages: ", "");
+                    line = sr.ReadLine();
                 }
-                line = sr.ReadLine();
                 sr.Close();
                 if (hosting == false)
                 {
