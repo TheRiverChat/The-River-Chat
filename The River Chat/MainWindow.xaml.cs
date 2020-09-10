@@ -43,15 +43,15 @@ namespace The_River_Chat
         public void load_items() //loading / writing server information from / to a specific file.
         {
             listwleft.Items.Clear(); // ListView start here (left side)
-            if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "server.file"))
+            if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "servers.file"))
             {
-                StreamReader sr = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + "server.file");
+                StreamReader sr = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + "servers.file");
                 string line = sr.ReadLine();
                 while (line != null)
                 {
-                    if (!Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + line + @"\server_servers.file"))
+                    if (!Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + line))
                     {
-                        MessageBox.Show("Error while loading" + line + "Server");
+                        MessageBox.Show("Error while loading " + line + " Server");
                     }
                     else if(line !="")
                     {
@@ -67,7 +67,7 @@ namespace The_River_Chat
                     line = sr.ReadLine();
                 }
             }
-            else File.Create(AppDomain.CurrentDomain.BaseDirectory + "server.file");
+            else File.Create(AppDomain.CurrentDomain.BaseDirectory + "servers.file");
             listwleft.Items.Add("+");
             listwleft.SelectedItem = -1;
 

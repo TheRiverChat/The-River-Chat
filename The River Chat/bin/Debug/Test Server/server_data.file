@@ -1,6 +1,0 @@
-
-name: Test Server
-ip: 192.168.50.216
-port: 2222
-messages: messages.txt
-hosting: false
