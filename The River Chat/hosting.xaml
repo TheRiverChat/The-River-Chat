@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:The_River_Chat"
         mc:Ignorable="d"
-        Title="The River - Hosting" Height="450" Width="800">
+        Title="The River - Hosting" Height="450" Width="800"
+        MinHeight="450" MinWidth="800">
     <Grid>
         <Label
             x:Name="label_name"
