@@ -64,7 +64,7 @@ namespace The_River_Chat
             {
                 try
                 {
-                    tc.Client.Send(Encoding.ASCII.GetBytes(e.MessageString));
+                    tc.Client.Send(Encoding.UTF8.GetBytes(e.MessageString));
                 }
                 catch { }
             }

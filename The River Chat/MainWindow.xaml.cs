@@ -106,8 +106,14 @@ namespace The_River_Chat
             else
             {
                 MessageBox.Show("Connection Error");
-                connect_btn.IsEnabled = true;
+                Task.Run(enable_cntd_btn);
             }
+        }
+
+        private async void enable_cntd_btn()
+        {
+            await Task.Delay(2000);
+            Application.Current.Dispatcher.Invoke(new Action(() => { connect_btn.IsEnabled = true; }));
         }
 
         private void send_btn_Click(object sender, RoutedEventArgs e) //Send button
@@ -121,7 +127,7 @@ namespace The_River_Chat
                 }
                 catch
                 {
-                    MessageBox.Show("Failed to send message!");
+                    MessageBox.Show("Failed to send message! Try again in 2 seconds");
                     connect_btn.IsEnabled = true;
                 }
             }
