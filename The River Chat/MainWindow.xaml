@@ -5,75 +5,94 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:The_River_Chat"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="The River" 
         Height="450" 
         Width="800"
+        MinHeight="450" 
+        MinWidth="800"
         >
     <Grid>
-
-        <TextBox 
-            x:Name="chat_box"
-            HorizontalAlignment="Left"
-            Height="300" Margin="140,70,0,0"
-            TextWrapping="Wrap"
-            VerticalAlignment="Top"
-            Width="622" RenderTransformOrigin="0.5,0.5"
-            >
-            <TextBox.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-0.284"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </TextBox.RenderTransform>
-        </TextBox>
-        <Button
-            x:Name="connect_btn"
-            Style="{StaticResource MaterialDesignRaisedAccentButton}"
-            Width="100"
-            ToolTip="Resource name: MaterialDesignRaisedAccentButton" Margin="624,10,70,379" Click="connect_btn_Click" Background="#FF00EAEA" BorderBrush="#FF0095EA">
-            Connect
-        </Button>
-
-        <Button
-            x:Name="send_btn"
-            Style="{StaticResource MaterialDesignRaisedAccentButton}"
-            Width="100"
-            ToolTip="Resource name: MaterialDesignRaisedAccentButton" Margin="624,379,70,10" Background="#FF00EAEA" BorderBrush="#FF0095EA" Click="send_btn_Click">
-            SEND
-        </Button>
-
-        <TextBox 
-            x:Name="text_tosend"
-            HorizontalAlignment="Left"
-            Height="23"
-            Margin="139,383,0,0"
-            TextWrapping="Wrap" 
-            Text=""
-            VerticalAlignment="Top"
-            Width="480"/>
-
-        <Label 
-            x:Name="chatname"
-            Content="Chat-Name"
-            Margin="370,18,335,0"
-            VerticalAlignment="Top" FontSize="16"/>
-
-        <ListView 
+        <StackPanel Orientation="Horizontal">
+            <ListView 
             x:Name="listwleft"
             HorizontalAlignment="Left"
             Height="401"
             Margin="10,10,0,0"
             VerticalAlignment="Top"
             Width="124" SelectionChanged="listwleft_SelectionChanged">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-        </ListView>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Label 
+                    x:Name="chatname"
+                    Content="Chat-Name"
+                    VerticalAlignment="Top" FontSize="16"/>
+                    <Button
+                    x:Name="connect_btn"
+                    Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                    Width="100"
+                    Margin="250,0,0,0"
+                    ToolTip="Resource name: MaterialDesignRaisedAccentButton" Click="connect_btn_Click" Background="#FF00EAEA" BorderBrush="#FF0095EA">
+                        Connect
+                    </Button>
+                </StackPanel>
+                <TextBox 
+                    x:Name="chat_box"
+                    HorizontalAlignment="Left"
+                    Height="300" 
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="622" RenderTransformOrigin="0.5,0.5"
+                    >
+                    <TextBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-0.284"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBox.RenderTransform>
+                </TextBox>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox 
+                        x:Name="text_tosend"
+                        HorizontalAlignment="Left"
+                        Height="35"
+                        TextWrapping="Wrap" 
+                        Text=""
+                        VerticalAlignment="Center"
+                        Width="480"/>
+                    <Button
+                        x:Name="send_btn"
+                        Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                        Width="100"
+                        Height="35"
+                        Margin="20,0,0,0"
+                        ToolTip="Resource name: MaterialDesignRaisedAccentButton" Background="#FF00EAEA" BorderBrush="#FF0095EA" Click="send_btn_Click">
+                            SEND
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        
+
+
+
+
+
+
+
+
+
+
+
 
 
     </Grid>
