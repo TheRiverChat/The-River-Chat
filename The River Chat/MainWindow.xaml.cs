@@ -80,9 +80,8 @@ namespace The_River_Chat
         {
             if (e.MessageString.ToString() == "Server stopped!")
             {
-                Application.Current.Dispatcher.Invoke(new Action(() =>{ cntd = false; connect_btn.IsEnabled = true; }));
-            }
-            Application.Current.Dispatcher.Invoke(new Action(() => { chat_box.Text += "\n" + e.MessageString.ToString(); }));
+                Application.Current.Dispatcher.Invoke(new Action(() =>{ cntd = false; connect_btn.IsEnabled = true; MessageBox.Show("Server Stopped"); }));
+            }else Application.Current.Dispatcher.Invoke(new Action(() => { chat_box.Text += "\n" + e.MessageString.ToString(); }));
         }
 
         private void connect_btn_Click(object sender, RoutedEventArgs e) //Connect button (top right)
