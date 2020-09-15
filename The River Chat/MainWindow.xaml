@@ -64,7 +64,7 @@
                         TextWrapping="Wrap" 
                         Text=""
                         Width="480"
-                        Padding="0" materialDesign:HintAssist.Hint="Type text..."/>
+                        Padding="0" materialDesign:HintAssist.Hint="Type text..." KeyDown="text_tosend_KeyDown"/>
                 <Button
                         x:Name="send_btn"
                         Style="{StaticResource MaterialDesignRaisedAccentButton}"

@@ -80,6 +80,7 @@ namespace The_River_Chat
         {
             if(startserver_btn.Content.ToString() == "Start server")
             {
+                
                 IPAddress nip = IPAddress.Parse(ip);
                 server.Start(nip, Convert.ToInt32(port));
                 startserver_btn.Content = "Stop hosting";

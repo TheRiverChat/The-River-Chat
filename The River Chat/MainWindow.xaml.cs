@@ -27,18 +27,22 @@ namespace The_River_Chat
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
-        {
-            InitializeComponent();
-            load_items();
-            
-        }
 
-        SimpleTcpClient client;
+        SimpleTcpClient client = new SimpleTcpClient();
 
         string ss_name;
         string ss_ip;
         string ss_port;
+
+        bool cntd = false;
+
+        public MainWindow()
+        {
+            InitializeComponent();
+            load_items();  
+            client.DataReceived += Client_DataRecieved;  
+        }
+
 
         public void load_items() //loading / writing server information from / to a specific file.
         {
@@ -70,11 +74,15 @@ namespace The_River_Chat
             else File.Create(AppDomain.CurrentDomain.BaseDirectory + "servers.file");
             listwleft.Items.Add("+");
             listwleft.SelectedItem = -1;
-            client = new SimpleTcpClient();
         }
+
         private void Client_DataRecieved(object sender, Message e)
         {
-            Application.Current.Dispatcher.Invoke(new Action(() => { chat_box.Text += "\n" + e.MessageString; }));
+            if (e.MessageString.ToString() == "Server stopped!")
+            {
+                Application.Current.Dispatcher.Invoke(new Action(() =>{ cntd = false; connect_btn.IsEnabled = true; }));
+            }
+            Application.Current.Dispatcher.Invoke(new Action(() => { chat_box.Text += "\n" + e.MessageString.ToString(); }));
         }
 
         private void connect_btn_Click(object sender, RoutedEventArgs e) //Connect button (top right)
@@ -85,9 +93,9 @@ namespace The_River_Chat
                 try
                 {
                     client.StringEncoder = Encoding.UTF8;
-                    client.DataReceived += Client_DataRecieved;
                     client.Connect(ss_ip, System.Convert.ToInt32(ss_port));
                     MessageBox.Show("Connected");
+                    cntd = true;
                 }
                 catch
                 {
@@ -98,22 +106,26 @@ namespace The_River_Chat
             else
             {
                 MessageBox.Show("Connection Error");
+                connect_btn.IsEnabled = true;
             }
         }
 
         private void send_btn_Click(object sender, RoutedEventArgs e) //Send button
         {
-            try
+            if (cntd)
             {
-                client.WriteLine(text_tosend.Text);
-                text_tosend.Text = "";
+                try
+                {
+                    client.WriteLine(text_tosend.Text);
+                    text_tosend.Text = "";
+                }
+                catch
+                {
+                    MessageBox.Show("Failed to send message!");
+                    connect_btn.IsEnabled = true;
+                }
             }
-            catch
-            {
-                MessageBox.Show("Failed to send message!");
-                connect_btn.IsEnabled = true;
-            }
-
+            else MessageBox.Show("First connect to your server!");
         }
         private void visibility(Visibility v)
         {
@@ -198,6 +210,27 @@ namespace The_River_Chat
             }
             
             
+        }
+
+        private void text_tosend_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                if (cntd)
+                {
+                    try
+                    {
+                        client.WriteLine(text_tosend.Text);
+                        text_tosend.Text = "";
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Failed to send message!");
+                        connect_btn.IsEnabled = true;
+                    }
+                }
+                else MessageBox.Show("First connect to your server!");
+            }
         }
     }
 }
