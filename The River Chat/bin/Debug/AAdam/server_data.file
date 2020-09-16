@@ -1,0 +1,6 @@
+
+name: AAdam
+ip: 78.92.151.186
+port: 2222
+messages: messages.txt
+hosting: false

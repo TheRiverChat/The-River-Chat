@@ -8,39 +8,59 @@
         Title="The River - Hosting" Height="450" Width="800"
         MinHeight="450" MinWidth="800">
     <Grid>
-        <Label
-            x:Name="label_name"
-            Content="Server Name"
-            Margin="90,130,583,256"
-            FontSize="20"/>
+        <DockPanel VerticalAlignment="Center">
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0 0 0 50" VerticalAlignment="Top" HorizontalAlignment="Center">
+                <Label 
+                    x:Name="label_name"
+                    Content="Server Name"
+                    FontSize="20" Margin="0 0 40 0"/>
+                <Label
+                    x:Name="label_ip"
+                    Content="Server IP"
+                    VerticalAlignment="Top"
+                    FontSize="20" Margin="40 0 40 0"/>
+                <Label
+                    DockPanel.Dock="Top"
+                    VerticalAlignment="Top"
+                    x:Name="label_port"
+                    Content="Server Port"
+                    FontSize="20" 
+                    HorizontalAlignment="Right"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" DockPanel.Dock="Top" Margin="0 50 0 0">
+                <Button
+                    x:Name="startserver_btn"
+                    Content="Start server"
+                    VerticalAlignment="Top"
+                    Width="120"
+                    Margin="0 0 40 0"
+                    Click="startserver_btn_Click"
+                    Background="#FF00EAEA"
+                    BorderBrush="#FF0095EA"
+                    Foreground="#DD000000"/>
 
-        <Label
-            x:Name="label_ip"
-            Content="Server IP"
-            Margin="354,130,355,0"
-            VerticalAlignment="Top"
-            FontSize="20"/>
+                <Button
+                    x:Name="UPNP_btn"
+                    Content="Port opening"
+                    Width="120"
+                    Margin="40 0 0 0"
+                    VerticalAlignment="Top" 
+                    Click="UPNP_btn_Click"
+                    Background="#FF00EAEA"
+                    BorderBrush="#FF0095EA" 
+                    Foreground="#DD000000"/>
+            </StackPanel>
 
-        <Label
-            x:Name="label_port"
-            Content="Server Port"
-            Margin="600,130,90,0"
-            VerticalAlignment="Top"
-            FontSize="20"/>
+        </DockPanel>
 
-        <Button
-            x:Name="startserver_btn"
-            Content="Start server"
-            Margin="220,215,0,0"
-            VerticalAlignment="Top"
-            Width="120"
-            HorizontalAlignment="Left" Click="startserver_btn_Click" Background="#FF00EAEA" BorderBrush="#FF0095EA" Foreground="#DD000000"/>
 
-        <Button
-            x:Name="UPNP_btn"
-            Content="Port opening"
-            Margin="464,215,210,0"
-            VerticalAlignment="Top" Click="UPNP_btn_Click" Background="#FF00EAEA" BorderBrush="#FF0095EA" Foreground="#DD000000"/>
+
+
+
+
+
+
+
 
     </Grid>
 </Window>
