@@ -40,8 +40,8 @@ namespace The_River_Chat
 
             //Definying contents for each label
             label_name.Content = name;
-            label_ip.Content = ip;
-            label_port.Content = port;
+            label_ip.Content = "ip: " + ip;
+            label_port.Content = "port: " + port;
 
             server = new SimpleTcpServer();
             server.Delimiter = 0x13; // enter

@@ -33,6 +33,7 @@ namespace The_River_Chat
         string ss_name;
         string ss_ip;
         string ss_port;
+        string DisplayName = "";
 
         bool cntd = false;
 
@@ -86,27 +87,36 @@ namespace The_River_Chat
 
         private void connect_btn_Click(object sender, RoutedEventArgs e) //Connect button (top right)
         {
+            
             connect_btn.IsEnabled = false;
-            if (ss_name != null && ss_ip != null && ss_port != null)
+            if(DisplayName != null && DisplayName != "")
             {
-                try
+                if (ss_name != null && ss_ip != null && ss_port != null)
                 {
-                    client.StringEncoder = Encoding.UTF8;
-                    client.Connect(ss_ip, System.Convert.ToInt32(ss_port));
-                    MessageBox.Show("Connected");
-                    cntd = true;
+                    try
+                    {
+                        client.StringEncoder = Encoding.UTF8;
+                        client.Connect(ss_ip, System.Convert.ToInt32(ss_port));
+                        MessageBox.Show("Connected");
+                        cntd = true;
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Connection Failed to Ip:" + ss_ip + "Port: " + ss_port);
+                        Task.Run(enable_cntd_btn);
+                    }
                 }
-                catch
+                else
                 {
-                    MessageBox.Show("Connection Failed to Ip:" + ss_ip + "Port: " + ss_port);
-                    connect_btn.IsEnabled = true;
+                    MessageBox.Show("Connection Error");
+                    Task.Run(enable_cntd_btn);
                 }
             }
             else
             {
-                MessageBox.Show("Connection Error");
-                Task.Run(enable_cntd_btn);
+                DisplayNameDockPanel.Visibility = Visibility.Visible;
             }
+
         }
 
         private async void enable_cntd_btn()
@@ -121,7 +131,7 @@ namespace The_River_Chat
             {
                 try
                 {
-                    client.WriteLine(text_tosend.Text);
+                    client.WriteLine(DisplayName + ": " + text_tosend.Text);
                     text_tosend.Text = "";
                 }
                 catch
@@ -225,7 +235,7 @@ namespace The_River_Chat
                 {
                     try
                     {
-                        client.WriteLine(text_tosend.Text);
+                        client.WriteLine(DisplayName + ": " + text_tosend.Text);
                         text_tosend.Text = "";
                     }
                     catch
@@ -236,6 +246,17 @@ namespace The_River_Chat
                 }
                 else MessageBox.Show("First connect to your server!");
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (dname_box.Text != "")
+            {
+                DisplayName = dname_box.Text;
+                DisplayNameDockPanel.Visibility = Visibility.Hidden;
+                connect_btn.IsEnabled = true;
+            }
+            else MessageBox.Show("Fill all fields!");
         }
     }
 }

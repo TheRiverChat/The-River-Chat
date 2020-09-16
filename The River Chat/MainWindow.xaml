@@ -13,6 +13,9 @@
         MinHeight="450" 
         MinWidth="800"
         >
+    <Window.Resources>
+        
+    </Window.Resources>
     <Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <ListView 
@@ -31,7 +34,7 @@
 
             <StackPanel VerticalAlignment="Stretch" Width="1" Margin="10" Background="Black"/>
         </StackPanel>
-        <DockPanel LastChildFill="True" Margin="155 5 5 5">
+        <DockPanel LastChildFill="True" Margin="155 5 5 5"> 
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" DockPanel.Dock="Top">
                 <Label 
                     x:Name="chatname"
@@ -76,6 +79,35 @@
                     SEND
                 </Button>
             </DockPanel>
+        </DockPanel>
+        <DockPanel LastChildFill="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Visibility="Hidden" x:Name="DisplayNameDockPanel">
+            <DockPanel.Background>
+                <SolidColorBrush Color="Black" Opacity="0.4"/>
+            </DockPanel.Background>
+            <Border VerticalAlignment="Center" HorizontalAlignment="Center" DockPanel.Dock="Bottom" MinWidth="200" MinHeight="270" Background="White" BorderThickness="1" CornerRadius="20" Opacity="1">
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
+                    <TextBlock Text="What's your display-name?" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" FontSize="20" FontFamily="verdana" FontStyle="Normal"/>
+                    <TextBox
+                        x:Name="dname_box"
+                        Margin="30 30 30 0"
+                        Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                        VerticalAlignment="Top"
+                        FontSize="15"
+                        AcceptsReturn="False"
+                        TextWrapping="Wrap"
+                        materialDesign:HintAssist.Hint="Display-Name"/>
+                    <Button
+                        x:Name="dname"
+                        Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                        Height="35"
+                        materialDesign:ButtonAssist.CornerRadius="5"
+                        Margin="90 30 90 0"
+                        ToolTip="MaterialDesignRaisedDarkButton with Round Corners" Click="Button_Click">
+                        <TextBlock Text="Okay"/>
+                    </Button>
+                </StackPanel>
+            </Border>
+
         </DockPanel>
     </Grid>
 </Window>
