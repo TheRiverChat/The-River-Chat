@@ -83,3 +83,5 @@ C:\Users\adamc\Desktop\TheRiverChat\The River Chat\obj\Debug\The River Chat.cspr
 C:\Users\adamc\Desktop\TheRiverChat\The River Chat\obj\Debug\The River Chat.csproj.CopyComplete
 C:\Users\adamc\Desktop\TheRiverChat\The River Chat\obj\Debug\The River Chat.exe
 C:\Users\adamc\Desktop\TheRiverChat\The River Chat\obj\Debug\The River Chat.pdb
+C:\Users\Fülöp\Documents\theriverchat\The-River-Chat\The River Chat\bin\Debug\SimpleTCP.dll
+C:\Users\Fülöp\Documents\theriverchat\The-River-Chat\The River Chat\bin\Debug\CustomDeEn.dll

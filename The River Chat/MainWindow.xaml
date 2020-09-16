@@ -109,5 +109,111 @@
             </Border>
 
         </DockPanel>
+        <DockPanel LastChildFill="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="EncryptCodeDockPanel" Visibility="Hidden">
+            <DockPanel.Background>
+                <SolidColorBrush Color="Black" Opacity="0.4"/>
+            </DockPanel.Background>
+            <Border VerticalAlignment="Center" HorizontalAlignment="Center" DockPanel.Dock="Bottom" MinWidth="200" MinHeight="270" Background="White" BorderThickness="1" CornerRadius="20" Opacity="1">
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
+                    <TextBlock Text="Type any 8 char and 8 numbers (255 is max)" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" FontSize="20" FontFamily="verdana" FontStyle="Normal"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" x:Name="char_panel">
+                        <TextBlock Text="Chars: " FontFamily="verdana" Foreground="Black" VerticalAlignment="Bottom" Margin="0 0 0 2" FontSize="16"/>
+                        <TextBox
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            Text=""
+                            Margin="8 0 8 0"
+                            VerticalAlignment="Bottom" HorizontalAlignment="Center" TextAlignment="Center" MinWidth="20" x:Name="charbox_1" PreviewTextInput="NotNumberValidationTextBox" KeyDown="char_bx_KeyDown" TextChanged="charbox_TextChanged" KeyUp="charbox_KeyUp"/>
+                        <TextBox
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            Text=""
+                            Margin="8 0 8 0"
+                            VerticalAlignment="Bottom" HorizontalAlignment="Center" TextAlignment="Center" MinWidth="20" x:Name="charbox_2" PreviewTextInput="NotNumberValidationTextBox" KeyDown="char_bx_KeyDown" TextChanged="charbox_TextChanged" KeyUp="charbox_KeyUp"/>
+                        <TextBox
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            Text=""
+                            Margin="8 0 8 0"
+                            VerticalAlignment="Bottom" HorizontalAlignment="Center" TextAlignment="Center" MinWidth="20" x:Name="charbox_3" PreviewTextInput="NotNumberValidationTextBox" KeyDown="char_bx_KeyDown" TextChanged="charbox_TextChanged" KeyUp="charbox_KeyUp"/>
+                        <TextBox
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            Text=""
+                            Margin="8 0 8 0"
+                            VerticalAlignment="Bottom" HorizontalAlignment="Center" TextAlignment="Center" MinWidth="20" x:Name="charbox_4" PreviewTextInput="NotNumberValidationTextBox" KeyDown="char_bx_KeyDown" TextChanged="charbox_TextChanged" KeyUp="charbox_KeyUp"/>
+                        <TextBox
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            Text=""
+                            Margin="8 0 8 0"
+                            VerticalAlignment="Bottom" HorizontalAlignment="Center" TextAlignment="Center" MinWidth="20" x:Name="charbox_5" PreviewTextInput="NotNumberValidationTextBox" KeyDown="char_bx_KeyDown" TextChanged="charbox_TextChanged" KeyUp="charbox_KeyUp"/>
+                        <TextBox
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            Text=""
+                            Margin="8 0 8 0"
+                            VerticalAlignment="Bottom" HorizontalAlignment="Center" TextAlignment="Center" MinWidth="20" x:Name="charbox_6" PreviewTextInput="NotNumberValidationTextBox" KeyDown="char_bx_KeyDown" TextChanged="charbox_TextChanged" KeyUp="charbox_KeyUp"/>
+                        <TextBox
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            Text=""
+                            Margin="8 0 8 0"
+                            VerticalAlignment="Bottom" HorizontalAlignment="Center" TextAlignment="Center" MinWidth="20" x:Name="charbox_7" PreviewTextInput="NotNumberValidationTextBox" KeyDown="char_bx_KeyDown" TextChanged="charbox_TextChanged" KeyUp="charbox_KeyUp"/>
+                        <TextBox
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            Text=""
+                            Margin="8 0 8 0"
+                            VerticalAlignment="Bottom" HorizontalAlignment="Center" TextAlignment="Center" MinWidth="20" x:Name="charbox_8" PreviewTextInput="NotNumberValidationTextBox" KeyDown="char_bx_KeyDown" TextChanged="charbox_TextChanged" KeyUp="charbox_KeyUp"/>
+                    </StackPanel>
+                    <StackPanel Height="1" Margin="50 20 50 0" Background="Black"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" x:Name="num_panel">
+                        <TextBlock Text="Numbers: " FontFamily="verdana" Foreground="Black" VerticalAlignment="Bottom" Margin="0 0 0 2" FontSize="16"/>
+                        <TextBox
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            Text=""
+                            Margin="8 0 8 0"
+                            VerticalAlignment="Bottom" HorizontalAlignment="Center" PreviewTextInput="NumberValidationTextBox" MaxLength="3" TextAlignment="Center" MinWidth="20" x:Name="numbox_1" KeyDown="numbox_KeyDown" TextChanged="numbox_TextChanged" KeyUp="numbox_KeyUp"/>
+                        <TextBox
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            Text=""
+                            Margin="8 0 8 0"
+                            VerticalAlignment="Bottom" HorizontalAlignment="Center" PreviewTextInput="NumberValidationTextBox" MaxLength="3" TextAlignment="Center" MinWidth="20" x:Name="numbox_2" KeyDown="numbox_KeyDown" TextChanged="numbox_TextChanged" KeyUp="numbox_KeyUp"/>
+                        <TextBox
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            Text=""
+                            Margin="8 0 8 0"
+                            VerticalAlignment="Bottom" HorizontalAlignment="Center" PreviewTextInput="NumberValidationTextBox" MaxLength="3" TextAlignment="Center" MinWidth="20" x:Name="numbox_3" KeyDown="numbox_KeyDown" TextChanged="numbox_TextChanged" KeyUp="numbox_KeyUp"/>
+                        <TextBox
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            Text=""
+                            Margin="8 0 8 0"
+                            VerticalAlignment="Bottom" HorizontalAlignment="Center" PreviewTextInput="NumberValidationTextBox" MaxLength="3" TextAlignment="Center" MinWidth="20" x:Name="numbox_4" KeyDown="numbox_KeyDown" TextChanged="numbox_TextChanged" KeyUp="numbox_KeyUp"/>
+                        <TextBox
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            Text=""
+                            Margin="8 0 8 0"
+                            VerticalAlignment="Bottom" HorizontalAlignment="Center" PreviewTextInput="NumberValidationTextBox" MaxLength="3" TextAlignment="Center" MinWidth="20" x:Name="numbox_5" KeyDown="numbox_KeyDown" TextChanged="numbox_TextChanged" KeyUp="numbox_KeyUp"/>
+                        <TextBox
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            Text=""
+                            Margin="8 0 8 0"
+                            VerticalAlignment="Bottom" HorizontalAlignment="Center" PreviewTextInput="NumberValidationTextBox" MaxLength="3" TextAlignment="Center" MinWidth="20" x:Name="numbox_6" KeyDown="numbox_KeyDown" TextChanged="numbox_TextChanged" KeyUp="numbox_KeyUp"/>
+                        <TextBox
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            Text=""
+                            Margin="8 0 8 0"
+                            VerticalAlignment="Bottom" HorizontalAlignment="Center" PreviewTextInput="NumberValidationTextBox" MaxLength="3" TextAlignment="Center" MinWidth="20" x:Name="numbox_7" KeyDown="numbox_KeyDown" TextChanged="numbox_TextChanged" KeyUp="numbox_KeyUp"/>
+                        <TextBox
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            Text=""
+                            Margin="8 0 8 0"
+                            VerticalAlignment="Bottom" HorizontalAlignment="Center" PreviewTextInput="NumberValidationTextBox" MaxLength="3" TextAlignment="Center" MinWidth="20" x:Name="numbox_8" KeyDown="numbox_KeyDown" TextChanged="numbox_TextChanged" KeyUp="numbox_KeyUp"/>
+                    </StackPanel>
+                    <Button
+                        x:Name="SetEncryptKeys"
+                        Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                        Height="35"
+                        materialDesign:ButtonAssist.CornerRadius="5"
+                        Margin="90 30 90 0"
+                        ToolTip="MaterialDesignRaisedDarkButton with Round Corners" Background="#FF00EAEA" BorderBrush="#FF0095EA" Click="SetEncryptKeys_Click">
+                        <TextBlock Text="Okay" Foreground="Black"/>
+                    </Button>
+                </StackPanel>
+            </Border>
+        </DockPanel>
     </Grid>
 </Window>

@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows;
@@ -257,6 +258,219 @@ namespace The_River_Chat
                 connect_btn.IsEnabled = true;
             }
             else MessageBox.Show("Fill all fields!");
+        }
+
+        private void char_bx_KeyDown(object sender, KeyEventArgs e)
+        {
+            TextBox t = (TextBox)sender;
+            if (e.Key != Key.Back && e.Key != Key.Delete && t.Text != "" )
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void charbox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox t = (TextBox)sender;
+            if (!t.Name.ToString().Contains("_8") && t.Text != "")
+            {
+                string next_box_name = t.Name.ToString();
+                int id = int.Parse(next_box_name.Replace("charbox_", ""));
+                id++;
+                TextBox te = (TextBox)char_panel.FindName("charbox_" + id);
+                te.Focus();
+            }
+        }
+
+        private void charbox_KeyUp(object sender, KeyEventArgs e)
+        {
+            TextBox t = (TextBox)sender;
+            if (e.Key == Key.Back)
+            {
+                if (t.Text == "" && !t.Name.ToString().Contains("_1"))
+                {
+                    string next_box_name = t.Name.ToString();
+                    int id = int.Parse(next_box_name.Replace("charbox_", ""));
+                    id--;
+                    TextBox te = (TextBox)char_panel.FindName("charbox_" + id);
+                    te.Focus();
+                }
+            }else if(e.Key == Key.Left)
+            {
+                if (!t.Name.ToString().Contains("_1"))
+                {
+                    string next_box_name = t.Name.ToString();
+                    int id = int.Parse(next_box_name.Replace("charbox_", ""));
+                    id--;
+                    TextBox te = (TextBox)char_panel.FindName("charbox_" + id);
+                    te.Focus();
+                }
+            }else if(e.Key == Key.Right)
+            {
+                if (!t.Name.ToString().Contains("_8"))
+                {
+                    string next_box_name = t.Name.ToString();
+                    int id = int.Parse(next_box_name.Replace("charbox_", ""));
+                    id++;
+                    TextBox te = (TextBox)char_panel.FindName("charbox_" + id);
+                    te.Focus();
+                }
+            }
+        }
+
+        private void numbox_KeyDown(object sender, KeyEventArgs e)
+        {
+            TextBox t = (TextBox)sender;
+            int value = 0;
+
+            //Char keyChar = (Char)System.Text.Encoding.ASCII.GetBytes(e.Key)[0];
+
+            if (t.Text.ToString() != "") value = int.Parse(t.Text.ToString() + convert_to_string(e.Key));
+            if(value > 255)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void numbox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void numbox_KeyUp(object sender, KeyEventArgs e)
+        {
+            TextBox t = (TextBox)sender;
+            if (e.Key == Key.Back)
+            {
+                if (t.Text == "" && !t.Name.ToString().Contains("_1"))
+                {
+                    string next_box_name = t.Name.ToString();
+                    int id = int.Parse(next_box_name.Replace("numbox_", ""));
+                    id--;
+                    TextBox te = (TextBox)num_panel.FindName("numbox_" + id);
+                    te.Focus();
+                }
+            }
+            else if (e.Key == Key.Left)
+            {
+                if (!t.Name.ToString().Contains("_1"))
+                {
+                    string next_box_name = t.Name.ToString();
+                    int id = int.Parse(next_box_name.Replace("numbox_", ""));
+                    id--;
+                    TextBox te = (TextBox)num_panel.FindName("numbox_" + id);
+                    te.Focus();
+                }
+            }
+            else if (e.Key == Key.Right)
+            {
+                if (!t.Name.ToString().Contains("_8"))
+                {
+                    string next_box_name = t.Name.ToString();
+                    int id = int.Parse(next_box_name.Replace("numbox_", ""));
+                    id++;
+                    TextBox te = (TextBox)num_panel.FindName("numbox_" + id);
+                    te.Focus();
+                }
+            }
+        }
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void NotNumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = !regex.IsMatch(e.Text);
+        }
+
+        private string convert_to_string(Key k)
+        {
+            if (k == Key.D0)
+            {
+                return "0";
+            }
+            else if (k == Key.D1)
+            {
+                return "1";
+            }
+            else if (k == Key.D2)
+            {
+                return "2";
+            }
+            else if (k == Key.D3)
+            {
+                return "3";
+            }
+            else if (k == Key.D4)
+            {
+                return "4";
+            }
+            else if (k == Key.D5)
+            {
+                return "5";
+            }
+            else if (k == Key.D6)
+            {
+                return "6";
+            }
+            else if (k == Key.D7)
+            {
+                return "7";
+            }
+            else if (k == Key.D8)
+            {
+                return "8";
+            }
+            else if (k == Key.D9)
+            {
+                return "9";
+            }
+            else return "0";
+        }
+
+        private void SetEncryptKeys_Click(object sender, RoutedEventArgs e)
+        {
+            bool filled = true;
+            string keys ="";
+            List<int> nums = new List<int>();
+            for (int i = 1; i < 9;)
+            {
+                TextBox te = (TextBox)char_panel.FindName("charbox_" + i);
+                if (te.Text.ToString() == "")
+                {
+                    filled = false;
+                }
+                else keys += te.Text.ToString();
+                i++;
+            }
+            for (int i = 1; i < 9;)
+            {
+                TextBox te = (TextBox)num_panel.FindName("numbox_" + i);
+                if (te.Text.ToString() == "")
+                {
+                    filled = false;
+                } else {
+                    int num = int.Parse(te.Text.ToString());
+                    nums.Add(num);
+                }
+                i++;
+            }
+            if(filled != true)
+            {
+                MessageBox.Show("Fill all fields");
+                return;
+            }
+            CustomDeEn.coder.SecretKey = keys;
+            byte[] b45 = { Convert.ToByte(nums[0]), Convert.ToByte(nums[1]), Convert.ToByte(nums[2]), Convert.ToByte(nums[3]), Convert.ToByte(nums[4]), Convert.ToByte(nums[5]), Convert.ToByte(nums[6]), Convert.ToByte(nums[7]) };
+            CustomDeEn.coder.b4 = b45;
+            /*string ecy = CustomDeEn.coder.Encrypt("Almás temető");
+            MessageBox.Show(ecy);
+            string decy = CustomDeEn.coder.Decrypt(ecy);
+            MessageBox.Show(decy);*/
         }
     }
 }
