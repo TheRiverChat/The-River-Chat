@@ -102,8 +102,8 @@
                         Height="35"
                         materialDesign:ButtonAssist.CornerRadius="5"
                         Margin="90 30 90 0"
-                        ToolTip="MaterialDesignRaisedDarkButton with Round Corners" Click="Button_Click">
-                        <TextBlock Text="Okay"/>
+                        ToolTip="MaterialDesignRaisedDarkButton with Round Corners" Click="Button_Click" Background="#FF00EAEA" BorderBrush="#FF0095EA">
+                        <TextBlock Text="Okay" Foreground="Black"/>
                     </Button>
                 </StackPanel>
             </Border>

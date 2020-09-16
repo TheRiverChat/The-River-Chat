@@ -102,7 +102,7 @@ namespace The_River_Chat
                     }
                     catch
                     {
-                        MessageBox.Show("Connection Failed to Ip:" + ss_ip + "Port: " + ss_port);
+                        MessageBox.Show("Connection Failed to Ip:" + ss_ip + " Port: " + ss_port);
                         Task.Run(enable_cntd_btn);
                     }
                 }
