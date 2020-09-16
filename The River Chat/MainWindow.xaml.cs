@@ -468,7 +468,7 @@ namespace The_River_Chat
             byte[] b45 = { Convert.ToByte(nums[0]), Convert.ToByte(nums[1]), Convert.ToByte(nums[2]), Convert.ToByte(nums[3]), Convert.ToByte(nums[4]), Convert.ToByte(nums[5]), Convert.ToByte(nums[6]), Convert.ToByte(nums[7]) };
             CustomDeEn.coder.b4 = b45;
             /*string ecy = CustomDeEn.coder.Encrypt("Almás temető");
-            MessageBox.Show(ecy);
+            MessageBox.Show(ecy);   ITS WORKING
             string decy = CustomDeEn.coder.Decrypt(ecy);
             MessageBox.Show(decy);*/
         }
