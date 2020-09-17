@@ -59,11 +59,10 @@
             <TextBox 
                 DockPanel.Dock="Top" 
                 x:Name="chat_box"
-                TextWrapping="Wrap"
                 VerticalAlignment="Stretch"
                 AcceptsReturn="True"
                 VerticalScrollBarVisibility="Auto"
-                SpellCheck.IsEnabled="True"
+                TextWrapping="Wrap"
                 HorizontalAlignment="Stretch"
                 Height="320">
             </TextBox>
