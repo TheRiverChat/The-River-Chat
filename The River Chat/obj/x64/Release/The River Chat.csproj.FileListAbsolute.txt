@@ -1,6 +1,7 @@
 C:\Users\Fülöp\Documents\theriverchat\The-River-Chat\The River Chat\bin\x64\Release\The River Chat.exe.config
 C:\Users\Fülöp\Documents\theriverchat\The-River-Chat\The River Chat\bin\x64\Release\The River Chat.exe
 C:\Users\Fülöp\Documents\theriverchat\The-River-Chat\The River Chat\bin\x64\Release\The River Chat.pdb
+C:\Users\Fülöp\Documents\theriverchat\The-River-Chat\The River Chat\bin\x64\Release\CustomDeEn.dll
 C:\Users\Fülöp\Documents\theriverchat\The-River-Chat\The River Chat\bin\x64\Release\MaterialDesignColors.dll
 C:\Users\Fülöp\Documents\theriverchat\The-River-Chat\The River Chat\bin\x64\Release\MaterialDesignThemes.Wpf.dll
 C:\Users\Fülöp\Documents\theriverchat\The-River-Chat\The River Chat\bin\x64\Release\Mono.Nat.dll
@@ -9,7 +10,6 @@ C:\Users\Fülöp\Documents\theriverchat\The-River-Chat\The River Chat\bin\x64\Re
 C:\Users\Fülöp\Documents\theriverchat\The-River-Chat\The River Chat\bin\x64\Release\MaterialDesignThemes.Wpf.pdb
 C:\Users\Fülöp\Documents\theriverchat\The-River-Chat\The River Chat\bin\x64\Release\MaterialDesignThemes.Wpf.xml
 C:\Users\Fülöp\Documents\theriverchat\The-River-Chat\The River Chat\bin\x64\Release\Mono.Nat.xml
-C:\Users\Fülöp\Documents\theriverchat\The-River-Chat\The River Chat\obj\x64\Release\The River Chat.csprojAssemblyReference.cache
 C:\Users\Fülöp\Documents\theriverchat\The-River-Chat\The River Chat\obj\x64\Release\addserver.g.cs
 C:\Users\Fülöp\Documents\theriverchat\The-River-Chat\The River Chat\obj\x64\Release\hosting.g.cs
 C:\Users\Fülöp\Documents\theriverchat\The-River-Chat\The River Chat\obj\x64\Release\MainWindow.g.cs
