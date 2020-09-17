@@ -37,6 +37,7 @@ namespace The_River_Chat
         string DisplayName = "";
 
         bool cntd = false;
+        bool encrypt = false;
 
         public MainWindow()
         {
@@ -78,12 +79,20 @@ namespace The_River_Chat
             listwleft.SelectedItem = -1;
         }
 
-        private void Client_DataRecieved(object sender, Message e)
+        private void Client_DataRecieved(object sender, Message e)  //IF CLIENT RECIVE DATA
         {
             if (e.MessageString.ToString() == "Server stopped!")
             {
                 Application.Current.Dispatcher.Invoke(new Action(() =>{ cntd = false; connect_btn.IsEnabled = true; MessageBox.Show("Server Stopped"); }));
-            }else Application.Current.Dispatcher.Invoke(new Action(() => { chat_box.Text += "\n" + e.MessageString.ToString(); }));
+            }else Application.Current.Dispatcher.Invoke(new Action(() => { 
+                if (encrypt && e.MessageString.ToString().Contains("ENCRYPTED MESSAGE from ") && !e.MessageString.ToString().Contains("Server stopped!")) //IF DATA HAS ENCRYPTED
+                {
+                    string s = e.MessageString.ToString();
+                    s = s.Replace(s.Last().ToString(), "");
+                    s = s.Replace("ENCRYPTED MESSAGE from ", "").Replace("\n", "").Replace("\r", "");
+                    chat_box.Text += "\n" + CustomDeEn.coder.Decrypt(s);
+                }
+                else chat_box.Text += "\n" + e.MessageString.ToString(); }));
         }
 
         private void connect_btn_Click(object sender, RoutedEventArgs e) //Connect button (top right)
@@ -132,7 +141,8 @@ namespace The_River_Chat
             {
                 try
                 {
-                    client.WriteLine(DisplayName + ": " + text_tosend.Text);
+                    if (encrypt) client.WriteLine("ENCRYPTED MESSAGE from " + CustomDeEn.coder.Encrypt(DisplayName + ": " + text_tosend.Text));
+                    else client.WriteLine(DisplayName + ": " + text_tosend.Text);
                     text_tosend.Text = "";
                 }
                 catch
@@ -236,7 +246,12 @@ namespace The_River_Chat
                 {
                     try
                     {
-                        client.WriteLine(DisplayName + ": " + text_tosend.Text);
+                        if (encrypt)
+                        {
+                            client.WriteLine("ENCRYPTED MESSAGE from " + CustomDeEn.coder.Encrypt(DisplayName + ": " + text_tosend.Text));
+                        }
+
+                        else client.WriteLine(DisplayName + ": " + text_tosend.Text);
                         text_tosend.Text = "";
                     }
                     catch
@@ -467,10 +482,57 @@ namespace The_River_Chat
             CustomDeEn.coder.SecretKey = keys;
             byte[] b45 = { Convert.ToByte(nums[0]), Convert.ToByte(nums[1]), Convert.ToByte(nums[2]), Convert.ToByte(nums[3]), Convert.ToByte(nums[4]), Convert.ToByte(nums[5]), Convert.ToByte(nums[6]), Convert.ToByte(nums[7]) };
             CustomDeEn.coder.b4 = b45;
+
             /*string ecy = CustomDeEn.coder.Encrypt("Almás temető");
             MessageBox.Show(ecy);   ITS WORKING
             string decy = CustomDeEn.coder.Decrypt(ecy);
             MessageBox.Show(decy);*/
+
+            encrypt = true;
+            EncryptCodeDockPanel.Visibility = Visibility.Hidden;
+            ECIcon_Locked.Visibility = Visibility.Visible;
+            ECIcon_Open.Visibility = Visibility.Hidden;
+        }
+
+        private void ECButton_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (!encrypt)
+            {
+                ECIcon_Open_Warning.Visibility = Visibility.Hidden;
+                ECIcon_Open.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void ECButton_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (!encrypt)
+            {
+                ECIcon_Open_Warning.Visibility = Visibility.Visible;
+                ECIcon_Open.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private async void ECButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!encrypt)
+            {
+                encrypt = true;
+                EncryptCodeDockPanel.Visibility = Visibility.Visible;
+                await Task.Delay(100);
+                encrypt = false;
+            }
+            else
+            {
+                MessageBoxResult result = MessageBox.Show("Are you sure change encrypt keys?", "ENCRYPT KEYS", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    EncryptCodeDockPanel.Visibility = Visibility.Visible;
+                    ECIcon_Locked.Visibility = Visibility.Hidden;
+                    ECIcon_Open.Visibility = Visibility.Visible;
+                    await Task.Delay(100);
+                    encrypt = false;
+                }
+            }
         }
     }
 }

@@ -48,6 +48,13 @@
                     ToolTip="Resource name: MaterialDesignRaisedAccentButton" Click="connect_btn_Click" Background="#FF00EAEA" BorderBrush="#FF0095EA">
                     Connect
                 </Button>
+                <Button x:Name="ECButton" Background="Transparent" Padding="0" BorderBrush="Transparent" Margin="10 0 0 0"  MouseEnter="ECButton_MouseEnter" MouseLeave="ECButton_MouseLeave" Click="ECButton_Click">
+                    <Grid>
+                        <materialDesign:PackIcon Kind="LockOpenAlert" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="30" Foreground="Red" x:Name="ECIcon_Open_Warning" Visibility="Visible"/>
+                        <materialDesign:PackIcon Kind="LockOpen" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="30" Foreground="Orange" x:Name="ECIcon_Open" Visibility="Hidden"/>
+                        <materialDesign:PackIcon Kind="LockCheck" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="30" Foreground="Green" x:Name="ECIcon_Locked" Visibility="Hidden"/>
+                    </Grid>
+                </Button>
             </StackPanel>
             <TextBox 
                 DockPanel.Dock="Top" 
@@ -66,8 +73,15 @@
                         Height="35"
                         TextWrapping="Wrap" 
                         Text=""
-                        Width="480"
+                        Width="460"
                         Padding="0" materialDesign:HintAssist.Hint="Type text..." KeyDown="text_tosend_KeyDown"/>
+                <Button x:Name="add_file"
+                        Width="40"
+                        Height="40" 
+                        BorderBrush="Transparent" Background="Transparent" Padding="0" HorizontalAlignment="Right">
+                    <materialDesign:PackIcon Kind="Paperclip" Background="Transparent" Foreground="Black" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Button>
+
                 <Button
                         x:Name="send_btn"
                         Style="{StaticResource MaterialDesignRaisedAccentButton}"
