@@ -27,3 +27,5 @@ C:\Users\Fülöp\Documents\theriverchat\The-River-Chat\The River Chat\obj\x64\Re
 C:\Users\Fülöp\Documents\theriverchat\The-River-Chat\The River Chat\obj\x64\Release\The River Chat.csproj.CopyComplete
 C:\Users\Fülöp\Documents\theriverchat\The-River-Chat\The River Chat\obj\x64\Release\The River Chat.exe
 C:\Users\Fülöp\Documents\theriverchat\The-River-Chat\The River Chat\obj\x64\Release\The River Chat.pdb
+C:\Users\Fülöp\Documents\theriverchat\The-River-Chat\The River Chat\obj\x64\Release\chat.g.cs
+C:\Users\Fülöp\Documents\theriverchat\The-River-Chat\The River Chat\obj\x64\Release\chat.baml

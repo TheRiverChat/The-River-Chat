@@ -189,6 +189,7 @@ namespace The_River_Chat
 
         private void listwleft_SelectionChanged(object sender, SelectionChangedEventArgs e) //List view task (Server list)
         {
+            
             try
             {
                 client.Disconnect();
