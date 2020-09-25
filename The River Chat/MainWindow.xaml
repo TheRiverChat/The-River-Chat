@@ -34,7 +34,7 @@
 
             <StackPanel VerticalAlignment="Stretch" Width="1" Margin="10" Background="Black"/>
         </StackPanel>
-        <DockPanel LastChildFill="True" Margin="155 5 5 5"> 
+        <DockPanel LastChildFill="True" Margin="155 5 5 5">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" DockPanel.Dock="Top">
                 <Label 
                     x:Name="chatname"
@@ -56,16 +56,7 @@
                     </Grid>
                 </Button>
             </StackPanel>
-            <TextBox 
-                DockPanel.Dock="Top" 
-                x:Name="chat_box"
-                VerticalAlignment="Stretch"
-                AcceptsReturn="True"
-                VerticalScrollBarVisibility="Auto"
-                TextWrapping="Wrap"
-                HorizontalAlignment="Stretch"
-                Height="320">
-            </TextBox>
+
             <DockPanel DockPanel.Dock="Bottom" HorizontalAlignment="Stretch" LastChildFill="True" VerticalAlignment="Bottom" Margin="0 0 0 10">
                 <TextBox 
                         x:Name="text_tosend"
@@ -93,6 +84,13 @@
                 </Button>
             </DockPanel>
         </DockPanel>
+        <ScrollViewer x:Name="sv" BorderBrush="Black" BorderThickness="1" DockPanel.Dock="Top" Margin="155 45 5 60">
+            <StackPanel Orientation="Vertical" x:Name="st"/>
+        </ScrollViewer>
+        <Grid x:Name="nw_ms" Width="300" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="100,0,0,60" Cursor="Hand" MouseDown="nw_ms_MouseDown" Visibility="Hidden">
+            <Border BorderThickness="1" Grid.Row="0" Grid.ColumnSpan="2" CornerRadius="20 20 0 0" BorderBrush="Transparent" Background="Cyan"/>
+            <TextBlock Text="New messages" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
         <DockPanel LastChildFill="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Visibility="Hidden" x:Name="DisplayNameDockPanel">
             <DockPanel.Background>
                 <SolidColorBrush Color="Black" Opacity="0.4"/>

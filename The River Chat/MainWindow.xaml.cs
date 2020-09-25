@@ -9,6 +9,7 @@ using System.Net.Sockets;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows;
@@ -38,6 +39,7 @@ namespace The_River_Chat
 
         bool cntd = false;
         bool encrypt = false;
+        bool inkillprocess = false;
 
         public MainWindow()
         {
@@ -84,15 +86,39 @@ namespace The_River_Chat
             if (e.MessageString.ToString() == "Server stopped!")
             {
                 Application.Current.Dispatcher.Invoke(new Action(() =>{ cntd = false; connect_btn.IsEnabled = true; MessageBox.Show("Server Stopped"); }));
-            }else Application.Current.Dispatcher.Invoke(new Action(() => { 
+            }else Application.Current.Dispatcher.Invoke(new Action(() => {
                 if (encrypt && e.MessageString.ToString().Contains("ENCRYPTED MESSAGE from ") && !e.MessageString.ToString().Contains("Server stopped!")) //IF DATA HAS ENCRYPTED
                 {
                     string s = e.MessageString.ToString();
                     s = s.Replace(s.Last().ToString(), "");
                     s = s.Replace("ENCRYPTED MESSAGE from ", "").Replace("\n", "").Replace("\r", "");
-                    chat_box.Text += "\n" + CustomDeEn.coder.Decrypt(s);
+                    chat c = new chat(CustomDeEn.coder.Decrypt(s));
+                    if (sv.VerticalOffset == sv.ScrollableHeight)
+                    {
+                        st.Children.Add(c);
+                        sv.ScrollToEnd();
+                    }
+                    else
+                    {
+                        st.Children.Add(c);
+                        nw_ms.Visibility = Visibility.Visible;
+                    }
                 }
-                else chat_box.Text += "\n" + e.MessageString.ToString(); }));
+                else
+                {
+                    chat c = new chat(e.MessageString.ToString());
+                    if (sv.VerticalOffset == sv.ScrollableHeight)
+                    {
+                        st.Children.Add(c);
+                        sv.ScrollToEnd();
+                    }
+                    else
+                    {
+                        st.Children.Add(c);
+                        nw_ms.Visibility = Visibility.Visible;
+                    }
+                }
+            }));
         }
 
         private void connect_btn_Click(object sender, RoutedEventArgs e) //Connect button (top right)
@@ -158,7 +184,7 @@ namespace The_River_Chat
             connect_btn.Visibility = v;
             text_tosend.Visibility = v;
             send_btn.Visibility = v;
-            chat_box.Visibility = v;           
+            sv.Visibility = v;           
         }
 
         private void listwleft_SelectionChanged(object sender, SelectionChangedEventArgs e) //List view task (Server list)
@@ -238,31 +264,36 @@ namespace The_River_Chat
             
         }
 
-        private void text_tosend_KeyDown(object sender, KeyEventArgs e)
+        private async void text_tosend_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.Key == Key.Enter)
+            if (!inkillprocess)
             {
-                if (cntd)
+                if (e.Key == Key.Enter)
                 {
-                    try
+                    if (cntd)
                     {
-                        if (encrypt)
+                        try
                         {
-                            client.WriteLine("ENCRYPTED MESSAGE from " + CustomDeEn.coder.Encrypt(DisplayName + ": " + text_tosend.Text));
-                        }
+                            if (encrypt)
+                            {
+                                client.WriteLine("ENCRYPTED MESSAGE from " + CustomDeEn.coder.Encrypt(DisplayName + ": " + text_tosend.Text));
+                            }
 
-                        else client.WriteLine(DisplayName + ": " + text_tosend.Text);
-                        text_tosend.Text = "";
+                            else client.WriteLine(DisplayName + ": " + text_tosend.Text);
+                            text_tosend.Text = "";
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Failed to send message!");
+                            connect_btn.IsEnabled = true;
+                        }
                     }
-                    catch
-                    {
-                        MessageBox.Show("Failed to send message!");
-                        connect_btn.IsEnabled = true;
-                    }
+                    else MessageBox.Show("First connect to your server!");
                 }
-                else MessageBox.Show("First connect to your server!");
             }
+
         }
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -533,6 +564,12 @@ namespace The_River_Chat
                     encrypt = false;
                 }
             }
+        }
+
+        private void nw_ms_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            sv.ScrollToEnd();
+            nw_ms.Visibility = Visibility.Hidden;
         }
     }
 }
