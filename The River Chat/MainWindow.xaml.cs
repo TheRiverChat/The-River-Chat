@@ -167,8 +167,8 @@ namespace The_River_Chat
             {
                 try
                 {
-                    if (encrypt) client.WriteLine("ENCRYPTED MESSAGE from " + CustomDeEn.coder.Encrypt(DisplayName + ": " + text_tosend.Text));
-                    else client.WriteLine(DisplayName + ": " + text_tosend.Text);
+                    if (encrypt && text_tosend.Text != "") client.WriteLine("ENCRYPTED MESSAGE from " + CustomDeEn.coder.Encrypt(DisplayName + ": " + text_tosend.Text));
+                    else if(text_tosend.Text != "") client.WriteLine(DisplayName + ": " + text_tosend.Text);
                     text_tosend.Text = "";
                 }
                 catch
