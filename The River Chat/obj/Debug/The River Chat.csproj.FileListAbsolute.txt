@@ -87,3 +87,5 @@ C:\Users\Fülöp\Documents\theriverchat\The-River-Chat\The River Chat\bin\Debug\
 C:\Users\Fülöp\Documents\theriverchat\The-River-Chat\The River Chat\bin\Debug\CustomDeEn.dll
 C:\Users\Fülöp\Documents\theriverchat\The-River-Chat\The River Chat\obj\Debug\chat.g.cs
 C:\Users\Fülöp\Documents\theriverchat\The-River-Chat\The River Chat\obj\Debug\chat.baml
+C:\Users\Fülöp\Documents\theriverchat\The-River-Chat\The River Chat\obj\Debug\UserKick.g.cs
+C:\Users\Fülöp\Documents\theriverchat\The-River-Chat\The River Chat\obj\Debug\UserKick.baml

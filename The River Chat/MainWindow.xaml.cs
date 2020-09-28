@@ -45,7 +45,7 @@ namespace The_River_Chat
         {
             InitializeComponent();
             load_items();  
-            client.DataReceived += Client_DataRecieved;  
+            client.DataReceived += Client_DataRecieved;
         }
 
 
@@ -85,40 +85,48 @@ namespace The_River_Chat
         {
             if (e.MessageString.ToString() == "Server stopped!")
             {
-                Application.Current.Dispatcher.Invoke(new Action(() =>{ cntd = false; connect_btn.IsEnabled = true; MessageBox.Show("Server Stopped"); }));
-            }else Application.Current.Dispatcher.Invoke(new Action(() => {
-                if (encrypt && e.MessageString.ToString().Contains("ENCRYPTED MESSAGE from ") && !e.MessageString.ToString().Contains("Server stopped!")) //IF DATA HAS ENCRYPTED
+                Application.Current.Dispatcher.Invoke(new Action(() => { cntd = false; connect_btn.IsEnabled = true; MessageBox.Show("Server Stopped"); }));
+            }else if (e.MessageString.ToString().Contains("Kick!"))
+            {
+                MessageBox.Show("You are kicked!");
+            }
+            else
+            {
+                Application.Current.Dispatcher.Invoke(new Action(() =>
                 {
-                    string s = e.MessageString.ToString();
-                    s = s.Replace(s.Last().ToString(), "");
-                    s = s.Replace("ENCRYPTED MESSAGE from ", "").Replace("\n", "").Replace("\r", "");
-                    chat c = new chat(CustomDeEn.coder.Decrypt(s));
-                    if (sv.VerticalOffset == sv.ScrollableHeight)
+                    if (encrypt && e.MessageString.ToString().Contains("ENCRYPTED MESSAGE from ") && !e.MessageString.ToString().Contains("Server stopped!") && !e.MessageString.ToString().Contains("Kick!")) //IF DATA HAS ENCRYPTED and server was not stopped and server was not kicked you
                     {
-                        st.Children.Add(c);
-                        sv.ScrollToEnd();
+                        string s = e.MessageString.ToString();
+                        s = s.Replace(s.Last().ToString(), "");
+                        s = s.Replace("ENCRYPTED MESSAGE from ", "").Replace("\n", "").Replace("\r", "");
+                        chat c = new chat(CustomDeEn.coder.Decrypt(s));
+                        if (sv.VerticalOffset == sv.ScrollableHeight)
+                        {
+                            st.Children.Add(c);
+                            sv.ScrollToEnd();
+                        }
+                        else
+                        {
+                            st.Children.Add(c);
+                            nw_ms.Visibility = Visibility.Visible;
+                        }
                     }
                     else
                     {
-                        st.Children.Add(c);
-                        nw_ms.Visibility = Visibility.Visible;
+                        chat c = new chat(e.MessageString.ToString());
+                        if (sv.VerticalOffset == sv.ScrollableHeight)
+                        {
+                            st.Children.Add(c);
+                            sv.ScrollToEnd();
+                        }
+                        else
+                        {
+                            st.Children.Add(c);
+                            nw_ms.Visibility = Visibility.Visible;
+                        }
                     }
-                }
-                else
-                {
-                    chat c = new chat(e.MessageString.ToString());
-                    if (sv.VerticalOffset == sv.ScrollableHeight)
-                    {
-                        st.Children.Add(c);
-                        sv.ScrollToEnd();
-                    }
-                    else
-                    {
-                        st.Children.Add(c);
-                        nw_ms.Visibility = Visibility.Visible;
-                    }
-                }
-            }));
+                }));
+            }
         }
 
         private void connect_btn_Click(object sender, RoutedEventArgs e) //Connect button (top right)
@@ -133,7 +141,8 @@ namespace The_River_Chat
                     {
                         client.StringEncoder = Encoding.UTF8;
                         client.Connect(ss_ip, System.Convert.ToInt32(ss_port));
-                        MessageBox.Show("Connected");
+                        client.WriteLine(DisplayName);
+                        //MessageBox.Show("Connected");
                         cntd = true;
                     }
                     catch

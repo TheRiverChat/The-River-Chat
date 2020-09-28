@@ -52,6 +52,7 @@
             </StackPanel>
 
         </DockPanel>
+        <StackPanel x:Name="users" HorizontalAlignment="Left" VerticalAlignment="Stretch" Orientation="Vertical" Width="180"/>
 
 
 
