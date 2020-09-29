@@ -8,8 +8,8 @@
         Title="The River - Hosting" Height="450" Width="800"
         MinHeight="450" MinWidth="800">
     <Grid>
-        <DockPanel VerticalAlignment="Center">
-            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0 0 0 50" VerticalAlignment="Top" HorizontalAlignment="Center">
+        <DockPanel VerticalAlignment="Center" Margin="0,0,25,0">
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0 0 0 50" VerticalAlignment="Top" HorizontalAlignment="Right">
                 <Label 
                     x:Name="label_name"
                     Content="Server Name"
@@ -27,7 +27,7 @@
                     FontSize="20" 
                     HorizontalAlignment="Right"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" DockPanel.Dock="Top" Margin="0 50 0 0">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" DockPanel.Dock="Top" Margin="0 50 0 0">
                 <Button
                     x:Name="startserver_btn"
                     Content="Start server"
@@ -52,7 +52,7 @@
             </StackPanel>
 
         </DockPanel>
-        <StackPanel x:Name="users" HorizontalAlignment="Left" VerticalAlignment="Stretch" Orientation="Vertical" Width="180"/>
+        <StackPanel x:Name="users" HorizontalAlignment="Left" VerticalAlignment="Stretch" Orientation="Vertical" Width="350"/>
 
 
 

@@ -27,9 +27,11 @@ namespace The_River_Chat
         string port;
         string messages;
         bool po = false;
-
+        bool banned = false;
+        List<string> banned_ips = new List<string>();
         int b = 0;
 
+        
 
         SimpleTcpServer server;
         List<TcpClient> cl = new List<TcpClient>();
@@ -60,44 +62,70 @@ namespace The_River_Chat
         }
         private void Server_ClientDisconnected(object sender, System.Net.Sockets.TcpClient e)
         {
-            MessageBox.Show("Client Disconnected");
+            //MessageBox.Show("Client Disconnected");
             TcpClient TcP = e;
             int i = cl.IndexOf(TcP);
             Application.Current.Dispatcher.Invoke((Action)delegate
             {
-                users.Children.Remove(uk[i]);
+                try
+                {
+                    users.Children.Remove(uk[i]);
+                    c_C_name.RemoveAt(i);
+                    cl.Remove(e);
+                }
+                catch { }
+
             });
 
-            c_C_name.RemoveAt(i);
-            cl.Remove(e);
+
         }
 
         private void Server_DataReceived(object sender, Message e)
         {
             TcpClient TcP = e.TcpClient;
             int i = cl.IndexOf(TcP);
-            if(c_C_name[i] == "Ismeretlen")
+            bool rtn = false;
+            try
             {
-                string name_v = e.MessageString.ToString();
-                name_v = name_v.Replace(name_v.Last().ToString(), "");
-                c_C_name[i] = name_v;
-                
-                Application.Current.Dispatcher.Invoke((Action)delegate
+                if (c_C_name[i] == "Ismeretlen")
                 {
-                    try
+                    string name_v = e.MessageString.ToString();
+                    name_v = name_v.Replace(name_v.Last().ToString(), "");
+                    name_v += " " + TcP.Client.RemoteEndPoint.ToString();
+                    c_C_name[i] = name_v;
+
+                    Application.Current.Dispatcher.Invoke((Action)delegate
                     {
-                        if(uk[i] != null)
+                        try
                         {
-                            uk[i] = new UserKick(TcP, name_v);
+                            if (uk[i] != null)
+                            {
+                                uk[i] = new UserKick(TcP, name_v);
+                            }
                         }
-                    }catch
-                    {
-                        uk.Add(new UserKick(TcP, name_v));
-                    }
-                    users.Children.Add(uk[i]);
-                });
-                MessageBox.Show("Client id: " + i + ", client name: " + name_v);
+                        catch
+                        {
+                            uk.Add(new UserKick(TcP, name_v));
+                        }
+                        users.Children.Add(uk[i]);
+                        foreach (TcpClient tc in cl)
+                        {
+                            try
+                            {
+                                tc.Client.Send(Encoding.UTF8.GetBytes(e.MessageString + " connected!"));
+
+                            }
+                            catch { }
+                        }
+                        rtn = true;
+                    });
+                    //MessageBox.Show("Client id: " + i + ", client name: " + name_v);
+                }
             }
+            catch { }
+
+            if (rtn) return;
+
             foreach (TcpClient tc in cl)
             {
                 try
@@ -110,10 +138,32 @@ namespace The_River_Chat
 
         private void Server_ClientConnected(object sender, System.Net.Sockets.TcpClient e)
         {
+            if (File.Exists("banned_ips.file"))
+            {
+                var ip = ((System.Net.IPEndPoint)e.Client.RemoteEndPoint).Address.ToString();
+                StreamReader sr = new StreamReader("banned_ips.file");
+                string b_ip = sr.ReadLine();
+                banned_ips.Add(b_ip);
+                while (string.IsNullOrEmpty(b_ip))
+                {
+                    if (!banned_ips.Contains(b_ip))
+                    {
+                        banned_ips.Add(b_ip);
+                    }
+                    b_ip = sr.ReadLine();
+                }
+                sr.Close();
+                if (banned_ips.Contains(ip))
+                {
+                    banned = true;
+                    e.Client.Send(Encoding.UTF8.GetBytes("You have been banned!"));
+                    e.Client.Disconnect(false);
+                }
+            }
             cl.Add(e);
             c_C_name.Add("Ismeretlen");
             int i = cl.IndexOf(e);
-            MessageBox.Show("Client Connected id:" + i);
+            //MessageBox.Show("Client Connected id:" + i);
         }
 
         private void startserver_btn_Click(object sender, RoutedEventArgs e) //Server start button function

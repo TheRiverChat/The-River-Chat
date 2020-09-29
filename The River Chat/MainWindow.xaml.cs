@@ -88,7 +88,11 @@ namespace The_River_Chat
                 Application.Current.Dispatcher.Invoke(new Action(() => { cntd = false; connect_btn.IsEnabled = true; MessageBox.Show("Server Stopped"); }));
             }else if (e.MessageString.ToString().Contains("Kick!"))
             {
-                MessageBox.Show("You are kicked!");
+                Application.Current.Dispatcher.Invoke(new Action(() => { cntd = false; connect_btn.IsEnabled = true; MessageBox.Show("You are kicked!"); }));   
+            }
+            else if (e.MessageString.ToString().Contains("You have been banned!"))
+            {
+                Application.Current.Dispatcher.Invoke(new Action(() => { cntd = false; connect_btn.IsEnabled = false; MessageBox.Show("You have been banned from this server!"); }));
             }
             else
             {
@@ -311,7 +315,28 @@ namespace The_River_Chat
             {
                 DisplayName = dname_box.Text;
                 DisplayNameDockPanel.Visibility = Visibility.Hidden;
-                connect_btn.IsEnabled = true;
+                connect_btn.IsEnabled = false;
+                if (ss_name != null && ss_ip != null && ss_port != null)
+                {
+                    try
+                    {
+                        client.StringEncoder = Encoding.UTF8;
+                        client.Connect(ss_ip, System.Convert.ToInt32(ss_port));
+                        client.WriteLine(DisplayName);
+                        //MessageBox.Show("Connected");
+                        cntd = true;
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Connection Failed to Ip:" + ss_ip + " Port: " + ss_port);
+                        Task.Run(enable_cntd_btn);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Connection Error");
+                    Task.Run(enable_cntd_btn);
+                }
             }
             else MessageBox.Show("Fill all fields!");
         }
