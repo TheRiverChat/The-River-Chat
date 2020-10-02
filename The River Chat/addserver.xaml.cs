@@ -20,9 +20,6 @@ using System.Windows.Shapes;
 
 namespace The_River_Chat
 {
-    /// <summary>
-    /// Interaction logic for addserver.xaml
-    /// </summary>
     public partial class addserver : Window
     {
         public addserver()
@@ -37,8 +34,7 @@ namespace The_River_Chat
                 MessageBox.Show("Error while getting you public IP address", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             serverport.Text = "2222";
-        }
-        
+        }     
         public static string GetLocalIPAddress()
         {
             var host = Dns.GetHostEntry(Dns.GetHostName());
@@ -51,13 +47,11 @@ namespace The_River_Chat
             }
             throw new Exception("No network adapters exist with vaild IPv4 address");
         }
-
         public void snlf(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(servername.Text))
                 servername.Text = "Server name";
         }
-
         public void spgf(object sender, EventArgs e)
         {
             if (serverport.Text =="Server port")
@@ -65,13 +59,11 @@ namespace The_River_Chat
                 serverport.Text = "";
             }
         }
-
         public void splf(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(serverport.Text))
                 serverport.Text = "Server port";
-        }
-        
+        }     
         public void sagf(object sender, EventArgs e)
         {
             if(serverip.Text == "Server ip")
@@ -84,7 +76,6 @@ namespace The_River_Chat
             if (string.IsNullOrWhiteSpace(serverip.Text))
                 serverip.Text = "Server IP";
         }
-
         private void host_btn_Click(object sender, RoutedEventArgs e)
         {
             if(servername.Text!="Server name"&& serverip.Text != "Server IP" && serverport.Text != "Server port" && servername.Text != ""&& serverip.Text!="" && serverport.Text !="")
@@ -94,7 +85,6 @@ namespace The_River_Chat
                 {
                     MessageBox.Show("A server with this name already exist!", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-
                 else
                 {
                     Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + servername.Text);
@@ -110,14 +100,13 @@ namespace The_River_Chat
                     sws.WriteLine("messages: messages.txt");
                     sws.WriteLine("hosting: true");
                     sws.Close();
-                    MessageBox.Show("Opening the Hosting interface", "INFO", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Opening Host interface", "INFO", MessageBoxButton.OK, MessageBoxImage.Information);
                     hosting hs = new hosting(servername.Text, serverip.Text, serverport.Text, "messages.txt");
                     hs.Show();
                     this.Close();
                 }
             }
         }
-
         private void add_btn_Click(object sender, RoutedEventArgs e)
         {
             if (servername.Text != "" && serverip.Text != "" && serverport.Text != "")
@@ -146,7 +135,7 @@ namespace The_River_Chat
             }
             else
             {
-                MessageBox.Show("Fill all fields!", "WARNING", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("All the fields should be filled!", "WARNING", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
     }

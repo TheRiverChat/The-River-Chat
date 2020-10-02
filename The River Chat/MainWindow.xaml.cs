@@ -24,12 +24,8 @@ using System.Windows.Shapes;
 
 namespace The_River_Chat
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-
         SimpleTcpClient client = new SimpleTcpClient();
 
         string ss_name;
@@ -40,15 +36,12 @@ namespace The_River_Chat
         bool cntd = false;
         bool encrypt = false;
         bool inkillprocess = false;
-
         public MainWindow()
         {
             InitializeComponent();
             load_items();  
             client.DataReceived += Client_DataRecieved;
         }
-
-
         public void load_items() //loading / writing server information from / to a specific file.
         {
             listwleft.Items.Clear(); // ListView start here (left side)
@@ -80,7 +73,6 @@ namespace The_River_Chat
             listwleft.Items.Add("+");
             listwleft.SelectedItem = -1;
         }
-
         private void Client_DataRecieved(object sender, Message e)  //IF CLIENT RECIVE DATA
         {
             if (e.MessageString.ToString() == "Server stopped!")
@@ -132,10 +124,8 @@ namespace The_River_Chat
                 }));
             }
         }
-
         private void connect_btn_Click(object sender, RoutedEventArgs e) //Connect button (top right)
-        {
-            
+        {          
             connect_btn.IsEnabled = false;
             if(DisplayName != null && DisplayName != "")
             {
@@ -165,15 +155,12 @@ namespace The_River_Chat
             {
                 DisplayNameDockPanel.Visibility = Visibility.Visible;
             }
-
         }
-
         private async void enable_cntd_btn()
         {
             await Task.Delay(2000);
             Application.Current.Dispatcher.Invoke(new Action(() => { connect_btn.IsEnabled = true; }));
         }
-
         private void send_btn_Click(object sender, RoutedEventArgs e) //Send button
         {
             if (cntd)
@@ -199,7 +186,6 @@ namespace The_River_Chat
             send_btn.Visibility = v;
             sv.Visibility = v;           
         }
-
         private void listwleft_SelectionChanged(object sender, SelectionChangedEventArgs e) //List view task (Server list)
         {
             
@@ -273,11 +259,8 @@ namespace The_River_Chat
                         hs.Show();
                     //}
                 }
-            }
-            
-            
+            }         
         }
-
         private async void text_tosend_KeyDown(object sender, KeyEventArgs e)
         {
             if (!inkillprocess)
@@ -307,8 +290,6 @@ namespace The_River_Chat
             }
 
         }
-
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (dname_box.Text != "")
@@ -328,7 +309,7 @@ namespace The_River_Chat
                     }
                     catch
                     {
-                        MessageBox.Show("Connection Failed to Ip:" + ss_ip + " Port: " + ss_port);
+                        MessageBox.Show("Connection Failed:" + ss_ip + " Port: " + ss_port);
                         Task.Run(enable_cntd_btn);
                     }
                 }
@@ -340,7 +321,6 @@ namespace The_River_Chat
             }
             else MessageBox.Show("Fill all fields!");
         }
-
         private void char_bx_KeyDown(object sender, KeyEventArgs e)
         {
             TextBox t = (TextBox)sender;
@@ -349,7 +329,6 @@ namespace The_River_Chat
                 e.Handled = true;
             }
         }
-
         private void charbox_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox t = (TextBox)sender;
@@ -362,7 +341,6 @@ namespace The_River_Chat
                 te.Focus();
             }
         }
-
         private void charbox_KeyUp(object sender, KeyEventArgs e)
         {
             TextBox t = (TextBox)sender;
@@ -398,7 +376,6 @@ namespace The_River_Chat
                 }
             }
         }
-
         private void numbox_KeyDown(object sender, KeyEventArgs e)
         {
             TextBox t = (TextBox)sender;
@@ -412,12 +389,9 @@ namespace The_River_Chat
                 e.Handled = true;
             }
         }
-
         private void numbox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
+        {    
         }
-
         private void numbox_KeyUp(object sender, KeyEventArgs e)
         {
             TextBox t = (TextBox)sender;
@@ -455,19 +429,16 @@ namespace The_River_Chat
                 }
             }
         }
-
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
-
         private void NotNumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = !regex.IsMatch(e.Text);
         }
-
         private string convert_to_string(Key k)
         {
             if (k == Key.D0)
@@ -512,7 +483,6 @@ namespace The_River_Chat
             }
             else return "0";
         }
-
         private void SetEncryptKeys_Click(object sender, RoutedEventArgs e)
         {
             bool filled = true;
@@ -548,18 +518,11 @@ namespace The_River_Chat
             CustomDeEn.coder.SecretKey = keys;
             byte[] b45 = { Convert.ToByte(nums[0]), Convert.ToByte(nums[1]), Convert.ToByte(nums[2]), Convert.ToByte(nums[3]), Convert.ToByte(nums[4]), Convert.ToByte(nums[5]), Convert.ToByte(nums[6]), Convert.ToByte(nums[7]) };
             CustomDeEn.coder.b4 = b45;
-
-            /*string ecy = CustomDeEn.coder.Encrypt("Almás temető");
-            MessageBox.Show(ecy);   ITS WORKING
-            string decy = CustomDeEn.coder.Decrypt(ecy);
-            MessageBox.Show(decy);*/
-
             encrypt = true;
             EncryptCodeDockPanel.Visibility = Visibility.Hidden;
             ECIcon_Locked.Visibility = Visibility.Visible;
             ECIcon_Open.Visibility = Visibility.Hidden;
         }
-
         private void ECButton_MouseEnter(object sender, MouseEventArgs e)
         {
             if (!encrypt)
@@ -568,7 +531,6 @@ namespace The_River_Chat
                 ECIcon_Open.Visibility = Visibility.Visible;
             }
         }
-
         private void ECButton_MouseLeave(object sender, MouseEventArgs e)
         {
             if (!encrypt)
@@ -577,7 +539,6 @@ namespace The_River_Chat
                 ECIcon_Open.Visibility = Visibility.Hidden;
             }
         }
-
         private async void ECButton_Click(object sender, RoutedEventArgs e)
         {
             if (!encrypt)
@@ -600,8 +561,7 @@ namespace The_River_Chat
                 }
             }
         }
-
-        private void nw_ms_MouseDown(object sender, MouseButtonEventArgs e)
+        private void nw_ms_MouseDown(object sender, MouseButtonEventArgs e) //Automatic scrolling in text field.
         {
             sv.ScrollToEnd();
             nw_ms.Visibility = Visibility.Hidden;

@@ -17,9 +17,6 @@ using System.Windows.Shapes;
 
 namespace The_River_Chat
 {
-    /// <summary>
-    /// Interaction logic for UserKick.xaml
-    /// </summary>
     public partial class UserKick : UserControl
     {
         TcpClient tcc;
@@ -29,14 +26,12 @@ namespace The_River_Chat
             nm_lbl.Text = uname;
             tcc = tc;
         }
-
         private void kick_Click(object sender, RoutedEventArgs e)
         {
             tcc.Client.Send(Encoding.UTF8.GetBytes("Kick!"));
             tcc.Client.Disconnect(false);
             //this.Visibility = Visibility.Hidden;
         }
-
         private void ban_Click(object s, RoutedEventArgs e)
         {
             var ip = ((System.Net.IPEndPoint)tcc.Client.RemoteEndPoint).Address.ToString();
@@ -44,8 +39,7 @@ namespace The_River_Chat
             sw.WriteLine(ip.ToString());
             sw.Close();
             tcc.Client.Send(Encoding.UTF8.GetBytes("You have been banned!"));
-            tcc.Client.Disconnect(false);
-            
+            tcc.Client.Disconnect(false);           
             //MessageBox.Show("Ban function is not working!");
         }
     }

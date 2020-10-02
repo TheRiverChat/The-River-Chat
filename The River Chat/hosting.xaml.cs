@@ -87,7 +87,7 @@ namespace The_River_Chat
             bool rtn = false;
             try
             {
-                if (c_C_name[i] == "Ismeretlen")
+                if (c_C_name[i] == "Unknown")
                 {
                     string name_v = e.MessageString.ToString();
                     name_v = name_v.Replace(name_v.Last().ToString(), "");
@@ -156,12 +156,12 @@ namespace The_River_Chat
                 if (banned_ips.Contains(ip))
                 {
                     banned = true;
-                    e.Client.Send(Encoding.UTF8.GetBytes("You have been banned!"));
+                    e.Client.Send(Encoding.UTF8.GetBytes("You have been banned from this server!"));
                     e.Client.Disconnect(false);
                 }
             }
             cl.Add(e);
-            c_C_name.Add("Ismeretlen");
+            c_C_name.Add("Unknown");
             int i = cl.IndexOf(e);
             //MessageBox.Show("Client Connected id:" + i);
         }
