@@ -1,14 +1,15 @@
 # The-River-Chat
 Online chat service using WPF material design paired with custom made text encryption / decryption service for secure data transfer.
 
-```mermaid
-sequenceDiagram
-Alice ->> Bob: Hello Bob, how are you?
-Bob-->>John: How about you John?
-Bob--x Alice: I am good thanks!
-Bob-x John: I am good thanks!
-Note right of John: Bob thinks a long<br/>long time, so long<br/>that the text does<br/>not fit on a row.
+# Mermaid Test
 
-Bob-->Alice: Checking with John...
-Alice->John: Yes... John, how are you?
-```
+    ```mermaid
+    graph TD
+      id1[A] --> id2[B]
+      id2[B] --> id3[C]
+      id3[C] --> id4[D]
+      id4[D] --> id5[E]
+      id5[E] --> id6[F]
+      id6[F] --> id7[G]
+      id7[G] --> id8[H]
+    ```
