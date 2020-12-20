@@ -90,7 +90,7 @@ namespace The_River_Chat
             {
                 Application.Current.Dispatcher.Invoke(new Action(() =>
                 {
-                    if (encrypt && e.MessageString.ToString().Contains("ENCRYPTED MESSAGE from ") && !e.MessageString.ToString().Contains("Server stopped!") && !e.MessageString.ToString().Contains("Kick!")) //IF DATA HAD BEEN ENCRYPTED and server did not stopped and server did not kick you
+                    if (encrypt && e.MessageString.ToString().Contains("ENCRYPTED MESSAGE from ") && !e.MessageString.ToString().Contains("Server stopped!") && !e.MessageString.ToString().Contains("Kick!")) //IF DATA HAS ENCRYPTED and server was not stopped and server was not kicked you
                     {
                         string s = e.MessageString.ToString();
                         s = s.Replace(s.Last().ToString(), "");

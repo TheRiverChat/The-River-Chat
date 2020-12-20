@@ -1,0 +1,6 @@
+
+name: teszt
+ip: 192.168.100.6
+port: 2222
+messages: messages.txt
+hosting: false

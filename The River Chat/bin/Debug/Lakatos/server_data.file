@@ -1,6 +1,0 @@
-
-name: Lakatos
-ip: 192.168.0.107
-port: 2222
-messages: messages.txt
-hosting: true

@@ -1,0 +1,7 @@
+C:\Users\Fülöp\Documents\theriverchat\The-River-Chat\The River Chat\obj\Release\The River Chat.csprojAssemblyReference.cache
+C:\Users\Fülöp\Documents\theriverchat\The-River-Chat\The River Chat\obj\Release\addserver.g.cs
+C:\Users\Fülöp\Documents\theriverchat\The-River-Chat\The River Chat\obj\Release\hosting.g.cs
+C:\Users\Fülöp\Documents\theriverchat\The-River-Chat\The River Chat\obj\Release\MainWindow.g.cs
+C:\Users\Fülöp\Documents\theriverchat\The-River-Chat\The River Chat\obj\Release\App.g.cs
+C:\Users\Fülöp\Documents\theriverchat\The-River-Chat\The River Chat\obj\Release\The River Chat_MarkupCompile.cache
+C:\Users\Fülöp\Documents\theriverchat\The-River-Chat\The River Chat\obj\Release\The River Chat_MarkupCompile.lref
