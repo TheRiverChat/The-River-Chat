@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\adamc\Desktop\TheRiverChat\The River Chat\obj\Debug\
+E:\Projects\GitHub\The-River-Chat\The River Chat\obj\Debug\
 The_River_Chat
 none
 false
 DEBUG;TRACE
-C:\Users\adamc\Desktop\TheRiverChat\The River Chat\App.xaml
+E:\Projects\GitHub\The-River-Chat\The River Chat\App.xaml
 51160329219
 
-101173187833
-20-1951760218
+92015547200
+20-542892424
 addserver.xaml;chat.xaml;hosting.xaml;MainWindow.xaml;UserKick.xaml;
 
-True
+False
 
